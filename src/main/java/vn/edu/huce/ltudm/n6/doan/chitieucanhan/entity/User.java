@@ -20,22 +20,32 @@ import javax.persistence.Table;
  * @author Administrator
  */
 @Entity
-//@Table(name ="user")
+@Table(name ="user")
 public class User {
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
    @Column(name="id_user")
+   @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id_user;
+   
+   @Column(name="username")
    private String username;
+   
+   @Column(name="password")
    private String password;
+   
+   @Column(name="fullname")
    private String fullname;
+   
+   @Column(name="phonenumber")
    private int phonenumber;
+   
+   @Column(name="role")
    private String role;
    
-  //@OneToOne(cascade = CascadeType.ALL)
-  //@JoinColumn(name = "id_wallet",referencedColumnName = "id_wallet")
-  //@JsonManagedReference
-  //private Wallet wallet;
+  @OneToOne
+  @JoinColumn(name = "id_wallet",referencedColumnName = "id_wallet")
+  @JsonManagedReference
+  private Wallet wallet;
   
     public Long getId_user() {
         return id_user;
