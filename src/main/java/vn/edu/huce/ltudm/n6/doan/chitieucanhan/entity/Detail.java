@@ -12,11 +12,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 /**
  *
  * @author Administrator
  */
 @Entity
+@Table(name = "detail")
 public class Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +32,12 @@ public class Detail {
     private Integer status;
     private String username;
     private String category;
+    private Long id_user;
+    
+//    @ManyToOne
+//    @JoinColumn(name = "id_user")
+//    private User user;
+    
     public Long getId_detail() {
         return id_detail;
     }
@@ -92,6 +102,12 @@ public class Detail {
         this.category = category;
     }
 
-  
-    
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
+    }
+     
 }

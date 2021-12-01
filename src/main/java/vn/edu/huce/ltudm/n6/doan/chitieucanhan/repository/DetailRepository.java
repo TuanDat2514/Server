@@ -15,7 +15,7 @@ import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Detail;
  *
  * @author Administrator
  */
-public interface DetailRepository extends CrudRepository<Detail,Long> {
+public interface DetailRepository extends JpaRepository<Detail,Long> {
    @Query(value = "SELECT u FROM Detail u WHERE u.username=:username")
    List<Detail> getDetailbyUsername(@Param("username")String username);
 }

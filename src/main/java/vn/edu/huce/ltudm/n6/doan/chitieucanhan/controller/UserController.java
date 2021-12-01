@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Detail;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.User;
+import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Wallet;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.repository.UserRepository;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.service.UserService;
 
