@@ -51,7 +51,7 @@ public class User {
   private Wallet wallet;
   
   @OneToMany
-  @JoinColumn(name = "id_username")
+  @JoinColumn(name = "id_user")
   private List<Detail> details=new ArrayList();
   
     public Long getId_user() {
