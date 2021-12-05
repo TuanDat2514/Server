@@ -7,7 +7,7 @@ package vn.edu.huce.ltudm.n6.doan.chitieucanhan.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Detail;
+
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Wallet;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.repository.WalletRepository;
 
@@ -30,4 +30,8 @@ public class WalletService {
         repo.deleteById(id);
     }
     
+    public void update(Long id_wallet,Wallet newWallet) { 
+        newWallet.setId_wallet(id_wallet);
+        repo.save(newWallet);
+    }
 }

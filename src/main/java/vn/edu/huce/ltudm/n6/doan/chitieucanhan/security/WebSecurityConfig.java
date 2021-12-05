@@ -53,6 +53,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/detail/all").hasRole("USER")
                 .antMatchers("/detail/all/*").hasRole("USER")
                 .antMatchers("/detail/add").hasRole("USER")
+                .antMatchers("/wallet/get/*").hasRole("USER")
+                 .antMatchers("/wallet/add/*").hasRole("USER")
+                    .antMatchers("/wallet/*").hasRole("USER")
                 .anyRequest().authenticated();
     }
 }

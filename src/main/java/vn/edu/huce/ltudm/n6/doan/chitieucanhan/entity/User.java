@@ -5,12 +5,14 @@
  */
 package vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +28,7 @@ import javax.persistence.Table;
 @Table(name ="user")
 public class User {
    @Id
-   @Column(name="id_user")
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id_user;
    
    @Column(name="username")
@@ -45,14 +46,18 @@ public class User {
    @Column(name="role")
    private String role;
    
-  @OneToOne
-  @JoinColumn(name = "id_wallet",referencedColumnName = "id_wallet")
-  @JsonManagedReference
-  private Wallet wallet;
-  
-  @OneToMany
-  @JoinColumn(name = "id_user")
-  private List<Detail> details=new ArrayList();
+//   @OneToOne
+//    @JoinColumn(name = "id_wallet",referencedColumnName = "id_wallet")
+//    @JsonManagedReference
+//    private Wallet wallet;
+    
+//    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+//    @JsonBackReference
+//    private Wallet wallet;
+//  
+//  @OneToMany
+//  @JoinColumn(name = "id_user")
+//  private List<Detail> details=new ArrayList();
   
     public Long getId_user() {
         return id_user;
@@ -112,13 +117,13 @@ public class User {
         this.role = role;
     }
 
-    public List<Detail> getDetails() {
-        return details;
-    }
-
-    public void setDetails(List<Detail> details) {
-        this.details = details;
-    }
+//    public List<Detail> getDetails() {
+//        return details;
+//    }
+//
+//    public void setDetails(List<Detail> details) {
+//        this.details = details;
+//    }
 
     
    
