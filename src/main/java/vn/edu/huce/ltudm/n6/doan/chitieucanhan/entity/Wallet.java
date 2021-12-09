@@ -7,6 +7,7 @@ package vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "wallet")
-public class Wallet {
+public class Wallet implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,12 +35,9 @@ public class Wallet {
     private float money;
     
 //    @OneToOne
-//    @JoinColumn(name = "id_wallet",referencedColumnName = "id_wallet")
-//    @JsonManagedReference
-//    private Wallet wallet;
-   
-//    @OneToOne(mappedBy = "wallet", fetch = FetchType.EAGER)
+//    @JoinColumn(name = "link_user",referencedColumnName = "id_user")
 //    private User user;
+  
     
     public Long getId_wallet() {
         return id_wallet;

@@ -7,6 +7,7 @@ package vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -26,7 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name ="user")
-public class User {
+public class User implements Serializable{
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id_user;
@@ -46,18 +47,9 @@ public class User {
    @Column(name="role")
    private String role;
    
-//   @OneToOne
-//    @JoinColumn(name = "id_wallet",referencedColumnName = "id_wallet")
-//    @JsonManagedReference
-//    private Wallet wallet;
-    
 //    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
-//    @JsonBackReference
 //    private Wallet wallet;
-//  
-//  @OneToMany
-//  @JoinColumn(name = "id_user")
-//  private List<Detail> details=new ArrayList();
+
   
     public Long getId_user() {
         return id_user;

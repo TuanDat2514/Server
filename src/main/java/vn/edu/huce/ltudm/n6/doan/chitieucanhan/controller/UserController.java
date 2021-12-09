@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Detail;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.User;
@@ -41,4 +42,8 @@ public class UserController {
     public List<User> list() {
         return userRepository.findAll();
     }
+    @GetMapping("/get")
+    public User getUser(@RequestParam String username) {
+         return userRepository.findOne(username);    
+    }  
 }

@@ -5,6 +5,7 @@
  */
 package vn.edu.huce.ltudm.n6.doan.chitieucanhan.repository;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +17,9 @@ import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Detail;
  * @author Administrator
  */
 public interface DetailRepository extends JpaRepository<Detail,Long> {
-   @Query(value = "SELECT u FROM Detail u WHERE u.username=:username")
+   @Query(value = "SELECT u FROM Detail u WHERE u.username=:username ")
    List<Detail> getDetailbyUsername(@Param("username")String username);
+   
+   @Query(value = "select gd from Detail gd where gd.username=?1 and (gd.date between ?2 and ?3)")
+   List<Detail> getDetail(String username,String startDate,String endDate);
 }

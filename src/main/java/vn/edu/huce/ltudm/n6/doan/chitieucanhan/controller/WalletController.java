@@ -36,7 +36,7 @@ public class WalletController {
    WalletRepository walletRepository;
     WalletService walletService;
  
-    
+    @CrossOrigin
     @PutMapping("/{id_wallet}")
     public ResponseEntity<Wallet> put(@PathVariable Long id_wallet,@RequestBody Wallet wallet,@RequestParam int money) {
        Optional<Wallet> walletOptional = walletRepository.findById(id_wallet);
@@ -46,7 +46,7 @@ public class WalletController {
             return new ResponseEntity<>(walletRepository.save(wallet), HttpStatus.OK);
         }).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+    @CrossOrigin
    @GetMapping("/get/{id_wallet}")
     public Optional<Wallet> get(@PathVariable Long id_wallet) {
         return walletRepository.findById(id_wallet);

@@ -5,13 +5,17 @@
  */
 package vn.edu.huce.ltudm.n6.doan.chitieucanhan.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Detail;
+import vn.edu.huce.ltudm.n6.doan.chitieucanhan.repository.DetailRepository;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.service.DetailService;
 
 /**
@@ -33,6 +38,8 @@ public class DetailController {
     
     @Autowired
     private DetailService detailService;
+    @Autowired
+    private DetailRepository detailRepository;
     @CrossOrigin
     @PostMapping("/add")
     public ResponseEntity<?> addDetail(@RequestBody Detail newDetail) {
@@ -50,9 +57,21 @@ public class DetailController {
         return detailService.listAll();
     }
     @CrossOrigin
-    @GetMapping("/all/{username}")
-    public List<Detail> getdetailsbyUser(@PathVariable String username) {
-        return (List<Detail>) detailService.getbyUsername(username);
+    @GetMapping("/all/get/{username}/")
+    public List<Detail> getDetails(@PathVariable String username,@RequestParam String startDate,@RequestParam String endDate) {
+        
+        return (List<Detail>) detailRepository.getDetail(username,startDate,endDate);
     }
-    
+    @CrossOrigin
+    @GetMapping("/all/{username}")
+    public List<Detail> getDetailbyUsername(@PathVariable String username) {
+        return(List<Detail>) detailService.getbyUsername(username);
+    }
+    @CrossOrigin
+    @DeleteMapping("delete/{id_detail}")
+    public ResponseEntity<Detail> delete(@PathVariable Long id_detail) {
+         detailService.delete(id_detail);
+         return new ResponseEntity<>(null,
+                HttpStatus.valueOf(204));
+     }
 }
