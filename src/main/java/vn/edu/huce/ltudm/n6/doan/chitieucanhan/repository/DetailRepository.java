@@ -22,4 +22,10 @@ public interface DetailRepository extends JpaRepository<Detail,Long> {
    
    @Query(value = "select gd from Detail gd where gd.username=?1 and (gd.date between ?2 and ?3)")
    List<Detail> getDetail(String username,Date startDate,Date endDate);
+   
+   @Query(value ="select sum(gd.price) from Detail gd where gd.username=?1 and status=0")
+   Integer getIncome(String username);
+   
+   @Query(value ="select sum(gd.price) from Detail gd where gd.username=?1 and status=1")
+   Integer getSpend(String username);
 }

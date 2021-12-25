@@ -80,5 +80,15 @@ public class DetailController {
          detailService.delete(id_detail);
          return new ResponseEntity<>(null,
                 HttpStatus.valueOf(204));
-     }
+    }
+    @CrossOrigin
+    @GetMapping("/tn/{username}")
+    public Integer getIncome(@PathVariable String username) {
+        return detailRepository.getIncome(username);
+    }
+    @CrossOrigin
+    @GetMapping("/ct/{username}")
+    public Integer getSpend(@PathVariable String username) {
+        return detailRepository.getSpend(username);
+    }
 }
