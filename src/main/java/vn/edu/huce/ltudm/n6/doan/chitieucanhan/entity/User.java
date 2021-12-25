@@ -50,7 +50,9 @@ public class User implements Serializable{
 //    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
 //    private Wallet wallet;
 
-  
+//    @OneToMany(mappedBy = "user1")
+//    private List<Detail> details;
+    
     public Long getId_user() {
         return id_user;
     }

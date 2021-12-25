@@ -32,11 +32,11 @@ public class Detail {
     private Integer status;
     private String username;
     private String category;
-    
+    private Long id_user;
     
 //    @ManyToOne
 //    @JoinColumn(name = "id_user")
-//    private User user;
+//    private User user1;
     
     public Long getId_detail() {
         return id_detail;
@@ -102,12 +102,12 @@ public class Detail {
         this.category = category;
     }
 
-//    public Long getId_user() {
-//        return id_user;
-//    }
-//
-//    public void setId_user(Long id_user) {
-//        this.id_user = id_user;
-//    }
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
+    }
      
 }

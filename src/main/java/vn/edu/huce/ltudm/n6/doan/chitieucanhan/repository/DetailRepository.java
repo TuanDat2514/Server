@@ -21,5 +21,5 @@ public interface DetailRepository extends JpaRepository<Detail,Long> {
    List<Detail> getDetailbyUsername(@Param("username")String username);
    
    @Query(value = "select gd from Detail gd where gd.username=?1 and (gd.date between ?2 and ?3)")
-   List<Detail> getDetail(String username,String startDate,String endDate);
+   List<Detail> getDetail(String username,Date startDate,Date endDate);
 }

@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Detail;
+import vn.edu.huce.ltudm.n6.doan.chitieucanhan.entity.Wallet;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.repository.DetailRepository;
+import vn.edu.huce.ltudm.n6.doan.chitieucanhan.repository.WalletRepository;
 import vn.edu.huce.ltudm.n6.doan.chitieucanhan.service.DetailService;
 
 /**
@@ -40,28 +42,33 @@ public class DetailController {
     private DetailService detailService;
     @Autowired
     private DetailRepository detailRepository;
+    @Autowired
+    private WalletRepository walletRepository;
     @CrossOrigin
     @PostMapping("/add")
-    public ResponseEntity<?> addDetail(@RequestBody Detail newDetail) {
-        detailService.save(newDetail);
+    public ResponseEntity<?> addDetail(@RequestBody Detail newDetail,Wallet wallet) {
+        detailService.save(newDetail);     
         return new ResponseEntity<>(null, HttpStatus.valueOf(200));
+            
     }
     @CrossOrigin
     @GetMapping("/{id_detail}")
     public Detail getDetail(@PathVariable Long id_detail) {
         return detailService.get(id_detail);
     }
+    
     @CrossOrigin
     @GetMapping("/all")
     public List<Detail> details() {
         return detailService.listAll();
     }
+    
     @CrossOrigin
     @GetMapping("/all/get/{username}/")
-    public List<Detail> getDetails(@PathVariable String username,@RequestParam String startDate,@RequestParam String endDate) {
-        
+    public List<Detail> getDetails(@PathVariable String username,@RequestParam Date startDate,@RequestParam Date endDate) {
         return (List<Detail>) detailRepository.getDetail(username,startDate,endDate);
     }
+    
     @CrossOrigin
     @GetMapping("/all/{username}")
     public List<Detail> getDetailbyUsername(@PathVariable String username) {
