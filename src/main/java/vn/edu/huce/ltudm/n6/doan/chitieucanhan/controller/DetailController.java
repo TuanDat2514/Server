@@ -91,4 +91,9 @@ public class DetailController {
     public Integer getSpend(@PathVariable String username) {
         return detailRepository.getSpend(username);
     }
+      @CrossOrigin
+    @GetMapping("/category/{username}")
+    public List<?> getSumbyCategory(@PathVariable String username) {
+        return detailRepository.getSumbyCategory(username);
+    }
 }

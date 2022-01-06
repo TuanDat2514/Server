@@ -28,4 +28,7 @@ public interface DetailRepository extends JpaRepository<Detail,Long> {
    
    @Query(value ="select sum(gd.price) from Detail gd where gd.username=?1 and status=1")
    Integer getSpend(String username);
+   
+   @Query(value = "select sum(gd.price) as sum,gd.id_category as id from Detail gd where username=?1 and status=1 group by id_category")
+   List<Integer> getSumbyCategory(String username);
 }

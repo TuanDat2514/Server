@@ -37,7 +37,8 @@ public class Wallet implements Serializable{
 //    @OneToOne
 //    @JoinColumn(name = "link_user",referencedColumnName = "id_user")
 //    private User user;
-  
+      @OneToOne(mappedBy = "wallet", fetch = FetchType.EAGER)
+    private User user;
     
     public Long getId_wallet() {
         return id_wallet;

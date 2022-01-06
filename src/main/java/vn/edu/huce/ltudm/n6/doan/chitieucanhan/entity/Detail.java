@@ -27,11 +27,11 @@ public class Detail {
     private Long id_detail;
     private String detail;
     private Date date;
-    private float price;
+    private Double price;
     private String note;
     private Integer status;
     private String username;
-    private String category;
+    private Long id_category;
     private Long id_user;
     
 //    @ManyToOne
@@ -62,11 +62,11 @@ public class Detail {
         this.date = date;
     }
 
-    public float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -94,12 +94,12 @@ public class Detail {
         this.username = username;
     }
 
-    public String getCategory() {
-        return category;
+    public Long getId_category() {
+        return id_category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setId_category(Long id_category) {
+        this.id_category = id_category;
     }
 
     public Long getId_user() {
