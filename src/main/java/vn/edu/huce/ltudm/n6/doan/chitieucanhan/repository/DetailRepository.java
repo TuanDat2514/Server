@@ -5,6 +5,7 @@
  */
 package vn.edu.huce.ltudm.n6.doan.chitieucanhan.repository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,12 +24,12 @@ public interface DetailRepository extends JpaRepository<Detail,Long> {
    @Query(value = "select gd from Detail gd where gd.username=?1 and (gd.date between ?2 and ?3)")
    List<Detail> getDetail(String username,Date startDate,Date endDate);
    
-   @Query(value ="select sum(gd.price) from Detail gd where gd.username=?1 and status=0")
-   Integer getIncome(String username);
+   @Query(value ="select sum(gd.price)as sum,gd.id_category as id from Detail gd where gd.username=?1 and status=1 and (gd.date between ?2 and ?3) group by id_category ")
+   List<Integer> getSumSpendbyCategoryDate(String username,Date startDate,Date endDate);
    
-   @Query(value ="select sum(gd.price) from Detail gd where gd.username=?1 and status=1")
-   Integer getSpend(String username);
+    @Query(value ="select sum(gd.price)as sum,gd.id_category as id from Detail gd where gd.username=?1 and status=0 and (gd.date between ?2 and ?3) group by id_category ")
+    List<Integer> getSumInbyCategoryDate(String username,Date startDate,Date endDate);
    
-   @Query(value = "select sum(gd.price) as sum,gd.id_category as id from Detail gd where username=?1 and status=1 group by id_category")
-   List<Integer> getSumbyCategory(String username);
+   @Query(value = "select sum(gd.price) as sum ,gd.id_category as id from Detail gd where username=?1 and status=1 group by id_category")
+   List<?> getSumbyCategory(String username);
 }

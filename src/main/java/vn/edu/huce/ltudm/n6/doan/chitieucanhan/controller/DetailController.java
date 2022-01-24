@@ -64,8 +64,9 @@ public class DetailController {
     }
     
     @CrossOrigin
-    @GetMapping("/all/get/{username}/")
+    @GetMapping("/all/get/{username}")
     public List<Detail> getDetails(@PathVariable String username,@RequestParam Date startDate,@RequestParam Date endDate) {
+        
         return (List<Detail>) detailRepository.getDetail(username,startDate,endDate);
     }
     
@@ -81,19 +82,20 @@ public class DetailController {
          return new ResponseEntity<>(null,
                 HttpStatus.valueOf(204));
     }
-    @CrossOrigin
-    @GetMapping("/tn/{username}")
-    public Integer getIncome(@PathVariable String username) {
-        return detailRepository.getIncome(username);
-    }
-    @CrossOrigin
-    @GetMapping("/ct/{username}")
-    public Integer getSpend(@PathVariable String username) {
-        return detailRepository.getSpend(username);
-    }
-      @CrossOrigin
+     @CrossOrigin
     @GetMapping("/category/{username}")
     public List<?> getSumbyCategory(@PathVariable String username) {
         return detailRepository.getSumbyCategory(username);
+    }
+    @CrossOrigin
+    @GetMapping("/category/spend/{username}")
+    public List<?> getSumSpendbyCategoryDate(@PathVariable String username,@RequestParam Date startDate,@RequestParam Date endDate) {
+        return detailRepository.getSumSpendbyCategoryDate(username,startDate,endDate);
+    }
+    
+    @CrossOrigin
+    @GetMapping("/category/income/{username}")
+    public List<?> getSumInbyCategoryDate(@PathVariable String username,@RequestParam Date startDate,@RequestParam Date endDate) {
+        return detailRepository.getSumInbyCategoryDate(username,startDate,endDate);
     }
 }
