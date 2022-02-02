@@ -98,4 +98,16 @@ public class DetailController {
     public List<?> getSumInbyCategoryDate(@PathVariable String username,@RequestParam Date startDate,@RequestParam Date endDate) {
         return detailRepository.getSumInbyCategoryDate(username,startDate,endDate);
     }
+    
+    @CrossOrigin
+    @GetMapping("/status1/{username}")
+    public Integer getSumSpend(@PathVariable String username,@RequestParam Date startDate,@RequestParam Date endDate) {
+        return detailRepository.getSumSpend(username,startDate,endDate);
+    }
+    
+    @CrossOrigin
+    @GetMapping("/status0/{username}")
+    public Integer getSumIn(@PathVariable String username,@RequestParam Date startDate,@RequestParam Date endDate) {
+        return detailRepository.getSumIncome(username,startDate,endDate);
+    }
 }
