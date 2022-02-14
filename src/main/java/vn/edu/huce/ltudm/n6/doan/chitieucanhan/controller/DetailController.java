@@ -99,4 +99,17 @@ public class DetailController {
         return detailRepository.getSumInbyCategoryDate(username,startDate,endDate);
     }
 
+    @CrossOrigin
+    @GetMapping("/month/{username}")
+    public List<?> getDatabyEMonth(@PathVariable String username,@RequestParam int year) {
+        return detailRepository.getDataSpendbyMonth(username,year);
+    }
+    
+    @CrossOrigin
+    @GetMapping("/year/{username}")
+    public List<?> getDatabyYear(@PathVariable String username,@RequestParam int year) {
+        return detailRepository.getDetailbyYear(username,year);
+    }
+    
+    
 }
