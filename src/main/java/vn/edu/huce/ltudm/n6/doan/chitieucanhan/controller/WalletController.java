@@ -34,21 +34,27 @@ import vn.edu.huce.ltudm.n6.doan.chitieucanhan.service.WalletService;
 public class WalletController {
    @Autowired
    WalletRepository walletRepository;
+   
     WalletService walletService;
  
-    @CrossOrigin
-    @PutMapping("/{id_wallet}")
-    public ResponseEntity<Wallet> put(@PathVariable Long id_wallet,@RequestBody Wallet wallet,@RequestParam int money) {
-       Optional<Wallet> walletOptional = walletRepository.findById(id_wallet);
-        return walletOptional.map(oldWallet -> {
-            wallet.setId_wallet(oldWallet.getId_wallet());
-            wallet.setMoney(oldWallet.getMoney()+money);
-            return new ResponseEntity<>(walletRepository.save(wallet), HttpStatus.OK);
-        }).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
+//    @CrossOrigin
+//    @PutMapping("/id_wallet")
+//    public ResponseEntity<?> put(@PathVariable Long id_wallet,@RequestBody Wallet wallet) {
+//         walletService.update(id_wallet,wallet);
+//         return new ResponseEntity<>(null,HttpStatus.valueOf(303)); 
+//    }
     @CrossOrigin
    @GetMapping("/get/{id_wallet}")
     public Optional<Wallet> get(@PathVariable Long id_wallet) {
         return walletRepository.findById(id_wallet);
+    }
+    @CrossOrigin
+    @PutMapping("/update/{id_wallet}")
+    public ResponseEntity<Wallet> updateWallet(@PathVariable Long id_wallet, @RequestBody Wallet wallet) {
+        Optional<Wallet> walletOptional = walletRepository.findById(id_wallet);
+        return walletOptional.map(wallet1 -> {
+            wallet.setId_wallet(wallet1.getId_wallet());
+            return new ResponseEntity<>(walletRepository.save(wallet), HttpStatus.valueOf(303));
+        }).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
