@@ -29,8 +29,7 @@ public class DetailService {
 
     @Autowired
     DetailRepository repo;
-    
-    
+
     public void save(Detail detail) {
         repo.save(detail);
     }
@@ -38,9 +37,11 @@ public class DetailService {
     public List<Detail> listAll() {
         return (List<Detail>) repo.findAll();
     }
-    public List<Detail> getbyUsername(String username){
+
+    public List<Detail> getbyUsername(String username) {
         return (List<Detail>) repo.getDetailbyUsername(username);
     }
+
     public Detail get(Long id) {
         return repo.findById(id).get();
     }
@@ -51,6 +52,11 @@ public class DetailService {
 
     public void deleteAll() {
         repo.deleteAll();
+    }
+
+    public void updateDetail(Long id, Detail detail) {
+        detail.setId_detail(id);
+        repo.save(detail);
     }
 //    public void addMoney(Long id,Wallet wallet,float money){
 //        //Wallet oldWallet=walletService.get(id);

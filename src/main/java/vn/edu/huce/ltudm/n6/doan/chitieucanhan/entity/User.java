@@ -50,9 +50,9 @@ public class User implements Serializable{
 //    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
 //    private Wallet wallet;
    
-    @OneToOne
-    @JoinColumn(name = "id_user",referencedColumnName = "link_user")
-    private Wallet wallet;
+//    @OneToOne
+//    @JoinColumn(name = "id_user",referencedColumnName = "link_user")
+//    private Wallet wallet;
    
 //    @OneToMany(mappedBy = "user1")
 //    private List<Detail> details;
@@ -115,13 +115,13 @@ public class User implements Serializable{
         this.role = role;
     }
 
-    public Wallet getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
+//    public Wallet getWallet() {
+//        return wallet;
+//    }
+//
+//    public void setWallet(Wallet wallet) {
+//        this.wallet = wallet;
+//    }
 
    
 

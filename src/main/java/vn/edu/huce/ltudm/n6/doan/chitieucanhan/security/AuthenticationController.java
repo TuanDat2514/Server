@@ -38,7 +38,8 @@ public class AuthenticationController {
                     defaultValue = "") String password
     ) {
         User user = userRepository.findOne(username);
-        if (user != null) {
+        
+        if (user !=null) {
             return new ResponseEntity<>(user,
                     HttpStatus.valueOf(200));
         } else {
